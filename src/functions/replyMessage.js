@@ -16,9 +16,13 @@ export default async (reply_token) => {
           text: 'How are you?'
       }]
   })
-  await fetch('https://api.line.me/v2/bot/message/reply', {
+  
+  const res = await fetch('https://api.line.me/v2/bot/message/reply', {
     method: 'post',
     body,
     headers
   })
+
+  console.log('res: ', res)
+  return res
 }
