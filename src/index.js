@@ -8,6 +8,8 @@ import dosScgController from './controllers/dosScgController'
 // configure cache middleware
 let memCache = new cache.Cache();
 
+const port = process.env.PORT || 3000
+
 // duration seconds
 let cacheMiddleware = (duration) => {
     return (req, res, next) => {
@@ -31,8 +33,8 @@ const app = express();
 
 // app.use(bodyparser);
 
-app.listen(3000, () =>
-  console.log('Example app listening on port 3000!'),
+app.listen(port, () =>
+  console.log('Example app listening on port ', port),
 )
 
 app.get("/findXYZ", cacheMiddleware(600), (req, res) => {
