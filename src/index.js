@@ -74,8 +74,8 @@ app.get("/findBestPath", cacheMiddleware(600), async (req, res) => {
 app.post('/webhook', async (req, res) => {
   let replyToken = req.body.events[0].replyToken
   let userId = req.body.events[0].source.userId
-  await dosScgController.replyMessage(replyToken)
+  await dosScgController.replyMessage(replyToken, "Wait")
 
-  setTimeout(() => dosScgController.pushMessage(userId, "Cannot help you !!."), 2000)
+  setTimeout(() => dosScgController.pushMessage(userId, "Cannot help you !!."), 10000)
   res.sendStatus(200)
 })
