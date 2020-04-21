@@ -1,5 +1,9 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+require("core-js/modules/es6.object.define-property");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -10,8 +14,6 @@ var _findXYZ = _interopRequireDefault(require("../functions/findXYZ"));
 var _findBC = require("../functions/findBC");
 
 var _findBestRoute = _interopRequireDefault(require("../functions/findBestRoute"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default = {
   findXYZ: _findXYZ["default"],

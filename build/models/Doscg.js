@@ -1,19 +1,20 @@
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+require("core-js/modules/es6.function.name");
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
 var DOSCG = /*#__PURE__*/function () {
   function DOSCG(name) {
-    _classCallCheck(this, DOSCG);
-
+    (0, _classCallCheck2["default"])(this, DOSCG);
     this.name = name;
   }
 
-  _createClass(DOSCG, null, [{
+  (0, _createClass2["default"])(DOSCG, null, [{
     key: "getName",
     value: function getName() {
       return this.name;
@@ -25,7 +26,6 @@ var DOSCG = /*#__PURE__*/function () {
       return this;
     }
   }]);
-
   return DOSCG;
 }();
 //# sourceMappingURL=Doscg.js.map
