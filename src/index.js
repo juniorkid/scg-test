@@ -71,8 +71,11 @@ app.get("/findBestPath", cacheMiddleware(600), async (req, res) => {
   res.json(response)
 })
 
-app.post('/webhook', (req, res) => {
+app.post('/webhook', async (req, res) => {
+  console.log('req.body.events[0]: ', req.body.events[0])
   let reply_token = req.body.events[0].replyToken
-  dosScgController.reply(reply_token)
+
+  console.log('reply_token: ', reply_token)
+  await dosScgController.replyMessage(reply_token)
   res.sendStatus(200)
 })
