@@ -3,9 +3,7 @@ import bodyparser from 'body-parser'
 import cache from 'memory-cache'
 import 'dotenv/config';
 
-import findXYZ from './functions/findXYZ'
-import { findB, findC } from './functions/findBC'
-import findBestRoute from './functions/findBestRoute'
+import dosScgController from './controllers/dosScgController'
 
 // configure cache middleware
 let memCache = new cache.Cache();
@@ -37,15 +35,11 @@ app.listen(3000, () =>
   console.log('Example app listening on port 3000!'),
 )
 
-app.get("/", cacheMiddleware(60), (req, res) => {
-  res.send ("Hello world...");
-})
-
-app.get("/findXYZ", cacheMiddleware(60), (req, res) => {
+app.get("/findXYZ", cacheMiddleware(600), (req, res) => {
   const problem = ['X', 'Y', 5, 9, 15, 23, 'Z']
-  const x = findXYZ(problem.indexOf('X'))
-  const y = findXYZ(problem.indexOf('Y'))
-  const z = findXYZ(problem.indexOf('Z'))
+  const x = dosScgController.findXYZ(problem.indexOf('X'))
+  const y = dosScgController.findXYZ(problem.indexOf('Y'))
+  const z = dosScgController.findXYZ(problem.indexOf('Z'))
 
   res.send ({
     x,
@@ -54,10 +48,10 @@ app.get("/findXYZ", cacheMiddleware(60), (req, res) => {
   });
 })
 
-app.get("/findBC", cacheMiddleware(60), (req, res) => {
+app.get("/findBC", cacheMiddleware(600), (req, res) => {
   const a = 21
-  const b = findB(a)
-  const c = findC(a)
+  const b = dosScgController.findB(a)
+  const c = dosScgController.findC(a)
 
   res.json ({
     b,
@@ -65,12 +59,16 @@ app.get("/findBC", cacheMiddleware(60), (req, res) => {
   })
 })
 
-app.get("/findBestPath", cacheMiddleware(60), async (req, res) => {
+app.get("/findBestPath", cacheMiddleware(600), async (req, res) => {
   const origin = "Central World"
   const destination = "SCG Bangsue"
 
-  const response = await findBestRoute(origin, destination)
-  console.log('response: ', response)
+  const response = await dosScgController.findBestRoute(origin, destination)
+  // console.log('response: ', response)
 
   res.json(response)
+})
+
+app.post("/webhook", async (req, res) => {
+  res.sendStatus(200)
 })
