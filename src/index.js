@@ -30,8 +30,8 @@ let cacheMiddleware = (duration) => {
     }
 }
 const app = express();
-
-// app.use(bodyparser);
+app.use(bodyparser.urlencoded({ extended: false }))
+app.use(bodyparser.json())
 
 app.listen(port, () =>
   console.log('Example app listening on port ', port),
@@ -71,6 +71,8 @@ app.get("/findBestPath", cacheMiddleware(600), async (req, res) => {
   res.json(response)
 })
 
-app.post("/webhook", async (req, res) => {
+app.post('/webhook', (req, res) => {
+  let reply_token = req.body.events[0].replyToken
+  dosScgController.reply(reply_token)
   res.sendStatus(200)
 })
