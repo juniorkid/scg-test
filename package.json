@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/juniorkid/scg-test#readme",
   "dependencies": {
+    "@babel/cli": "^7.8.4",
     "@line/bot-sdk": "^6.8.4",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
@@ -36,7 +37,6 @@
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
     "@babel/register": "^7.9.0",
-    "babel-cli": "^6.26.0",
     "nodemon": "^2.0.3",
     "sqlite3": "^4.1.1"
   }
